@@ -25,6 +25,8 @@ int i; //Common Loop Variable
 class userDetails
 {	char* username[10][20];
 	char* password[10][20];
+	char* given_username[1][20];
+	char* given_password[1][20];
 	int usernum = 0;
 	public:
 		int userNum()
@@ -33,8 +35,7 @@ class userDetails
 		}
 		int newUser()
 		{	
-			char* given_username[1][20];
-			char* given_password[1][20];
+			system("cls");
 			spacing(1);
 			spacing(2);
 			printf("\tSign Up\n");
@@ -48,6 +49,10 @@ class userDetails
 			spacing(2);
 			userNum();	
 			return 0;		
+		}
+		int alreadyUser()
+		{
+			
 		}
 		
 }dataKey ;
