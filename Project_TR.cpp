@@ -28,22 +28,23 @@ int main()
 	return 0;
 }
 int login_screen()
-{ //Login Screen
+{ //Login Screen 
 	fstream alreadyUser_obj, newUser_obj;
 	spacing(1);
 	spacing(2);
 	printf("\tTicket Reservation\n");
 	spacing(1);
 	spacing(2);
-	printf("Login to Continue");
+	printf("      Login to Continue");
 	spacing(2);
-	printf("--> Sign In");
+	printf("      --> Sign In");
 	spacing(2);
-	printf("--> Sign Up");
+	printf("      --> Sign Up");
 	spacing(2);
-	printf("Choose Option (1/2) : ");
+	printf("      Choose Option (1/2) : ");
 	scanf("%d", &i);
 	input_fn(i);
+	switch (i)
 	switch (i)
 	{
 	case 1: // Case for Already User
