@@ -21,7 +21,7 @@ int help();
 int thankyou();
 int database();
 int book_ticket();
-int i =0; //Common Loop Variable
+int i; //Common Loop Variable
 class userDetails
 {	char* username[10][20];
 	char* password[10][20];
