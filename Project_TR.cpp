@@ -21,7 +21,36 @@ int help();
 int thankyou();
 int database();
 int book_ticket();
-int i; //Common Loop Variable
+int i =0; //Common Loop Variable
+class userDetails
+{	char* username[10][20];
+	char* password[10][20];
+	int usernum = 0;
+	public:
+		int userNum()
+		{	
+			usernum++;
+		}
+		int newUser()
+		{	
+			char* given_username[1][20];
+			char* given_password[1][20];
+			spacing(1);
+			spacing(2);
+			printf("\tSign Up\n");
+			spacing(1);
+			spacing(2);
+			printf("--> Username : ");
+			gets(given_username[1][20]);
+			spacing(2);
+			printf("--> Password : ");
+			gets(given_password[1][20]);
+			spacing(2);
+			userNum();	
+			return 0;		
+		}
+		
+}dataKey ;
 int main()
 { //Main Function
 	login_screen();
@@ -30,6 +59,7 @@ int main()
 int login_screen()
 { //Login Screen 
 	fstream alreadyUser_obj, newUser_obj;
+	system("cls");
 	spacing(1);
 	spacing(2);
 	printf("\tTicket Reservation\n");
@@ -45,12 +75,23 @@ int login_screen()
 	scanf("%d", &i);
 	input_fn(i);
 	switch (i)
-	switch (i)
 	{
 	case 1: // Case for Already User
 		break;
 	case 2: // Case for New User
+		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
+		newUser_obj.write((char *)&dataKey, sizeof(dataKey));
+		dataKey.newUser();
+		newUser_obj.close();
 		break;
+	default:
+		printf("\n");
+		for (i = 0; i <= 5; i++)
+			printf("\t   ");
+		printf("------INVALID INPUT-------");
+		sleep(2);
+		system("cls");
+		login_screen();
 	}
 	system("cls");
 	main_screen();
