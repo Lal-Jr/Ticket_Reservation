@@ -52,7 +52,18 @@ class userDetails
 		}
 		int alreadyUser()
 		{
-			
+			system("cls");
+            spacing(1);
+            spacing(2);
+            printf("\tSign Up\n");
+            spacing(1);
+            spacing(2);
+            printf("--> Username : ");
+            gets(given_username[1][20]);
+            spacing(2);
+            printf("--> Password : ");
+            gets(given_password[1][20]);
+            spacing(2);
 		}
 		
 }dataKey ;
