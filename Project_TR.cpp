@@ -1,4 +1,4 @@
-// Updated : 14-10-20 18:17
+// Updated : 16-10-20 09:57
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
@@ -22,117 +22,6 @@ int thankyou();
 int database();
 int book_ticket();
 int i; //Common Loop Variable
-class UserDetails
-{ //Structure for User Details
-	char *username[10][20];
-	char *password[10][20];
-	int free;
-	
-	public:
-	UserDetails()
-	{
-		free=0;
-		for(i=0;i<10;i++)
-			{
-				strcpy(username[i][20],"NIL");
-				strcpy(password[i][20],"NIL");
-			}
-	}
-	int newUser()
-	{ //Function for creating new user
-		system("cls");
-		spacing(1);
-		spacing(2);
-		printf("\t   Sign Up\n");
-		spacing(1);
-		spacing(2);
-		for (i = 0; i < 10; i++)
-			if (strcmp(username[i][20], "NIL") == 0)
-			{
-				free = i;
-				break;
-			}
-		spacing(2);
-		printf("-->Username : ");
-		gets(username[free][20]);
-		spacing(2);
-		printf("-->Password : ");
-		gets(password[free][20]);
-		return 0;
-	}
-	int alreadyUser()
-	{ //Function for already user
-		char *given_username[1][20];
-		char *given_password[1][20];
-		int indexValue = 0;
-		system("cls");
-		spacing(1);
-		spacing(2);
-		printf("\t    Sign In\n");
-		spacing(1);
-		spacing(2);
-		printf("-->Username : ");
-		gets(given_username[1][20]);
-		spacing(2);
-		printf("-->Password : ");
-		gets(given_password[1][20]);
-		if (strcmp(given_username[1][20], "admin") == 0)
-		{ //given username is admin username
-			if (strcmp(given_password[1][20], "admin") == 0)
-			{ //all given credentials are correct
-				system("cls");
-				for (i = 0; i < 10; i++)
-					printf("\n\t\t\t\t   ");
-				printf("--------------REDIRECTING---------------");
-				sleep(1.5);
-				system("cls");
-				database();
-			}
-			else
-			{ //given password is not admin password
-				spacing(2);
-				printf("\tIncorrect Password, Please Try Again!\n");
-					spacing(2);
-				alreadyUser();
-			}
-		}
-		else
-		{ //given username is not admin credentials
-			for (i = 0; i < 10; i++)
-				if (strcmp(given_username[1][20], username[i][20]) == 0)
-					indexValue = i;
-			if (indexValue != 0)
-			{ //given username is in file
-				if (strcmp(given_password[1][20], password[indexValue][20]) == 0)
-				{ //given password matches the corresponding username
-					spacing(2);
-					printf("\tWelcome,%s \n", username[i]);
-					spacing(2);
-					main_screen();
-				}
-				else
-				{ //given password not matches the corresponding username
-					spacing(2);
-					printf("\tInvalid Password, Please Try Again!\n");
-					spacing(2);
-					alreadyUser();
-				}
-			}
-			else
-			{ //given username is not in file
-				spacing(2);
-				printf("\tNo Such Users Found, Please Try Again!\n");
-				spacing(2);
-				alreadyUser();
-			}
-		}
-	}
-	int clearData()
-	{ //Function for clearing all user data from file
-		remove("UserDetails.dat");
-		return 0;
-	}
-} dataKey;
 int main()
 { //Main Function
 	login_screen();
@@ -158,16 +47,8 @@ int login_screen()
 	switch (i)
 	{
 	case 1: // Case for Already User
-		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
-		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
-		dataKey.alreadyUser();
-		alreadyUser_obj.close();
 		break;
 	case 2: // Case for New User
-		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
-		newUser_obj.write((char *)&dataKey, sizeof(dataKey));
-		dataKey.newUser();
-		newUser_obj.close();
 		break;
 	}
 	system("cls");
