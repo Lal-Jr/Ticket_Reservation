@@ -28,7 +28,6 @@ class userDetails
 	char* given_username[1][20];
 	char* given_password[1][20];
 	int usernum, is_admin, is_user;
-	FILE *fp;
 	public:
 		userDetails()
 		{
@@ -49,11 +48,11 @@ class userDetails
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
-			fgets(given_username[1][20],20,fp);
+			scanf("%s", &given_username[1][20]);
 			strcpy(username[usernum][20],given_username[1][20]);
 			spacing(2);
 			printf("--> Password : ");
-			fgets(given_password[1][20], 20, fp);
+			scanf("%s", &given_password[1][20]);
 			strcpy(password[usernum][20], given_password[1][20]);
 			spacing(2);
 			userNum();	
@@ -68,10 +67,10 @@ class userDetails
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
-			fgets(given_username[1][20], 20, fp);
+			scanf("%s", &given_username[1][20]);
 			spacing(2);
 			printf("--> Password : ");
-			fgets(given_password[1][20], 20, fp);
+			scanf("%s", &given_password[1][20]);
 			if (strcmp(given_username[1][20], "admin") == 0)
 				if (strcmp(given_password[1][20], "admin") == 0)
 					is_admin = 1;
