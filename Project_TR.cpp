@@ -27,7 +27,7 @@ class userDetails
 	char* password[10][20];
 	char* given_username[1][20];
 	char* given_password[1][20];
-	int usernum = 0;
+	int usernum = 0, is_admin = 0;
 	public:
 		int userNum()
 		{	
@@ -54,7 +54,22 @@ class userDetails
 		}
 		int alreadyUser()
 		{
-			
+			system("cls");
+			spacing(1);
+			spacing(2);
+			printf("\tSign In\n");
+			spacing(1);
+			spacing(2);
+			printf("--> Username : ");
+			gets(given_username[1][20]);
+				if (strcmp(given_username[1][20], "admin") == 0)
+					if (strcmp(given_password[1][20], "admin") == 0)
+						is_admin = 1;
+			while(is_admin)
+			{
+				system("cls");
+				database();
+			}				
 		}
 		
 }dataKey ;
