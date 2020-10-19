@@ -1,4 +1,4 @@
-// Updated : 16-10-20 09:57
+// Updated : 19-10-20 23:34
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
@@ -27,8 +27,15 @@ class userDetails
 	char* password[10][20];
 	char* given_username[1][20];
 	char* given_password[1][20];
-	int usernum = 0, is_admin = 0, is_user = 0;
+	int usernum, is_admin, is_user;
+	FILE *fp;
 	public:
+		userDetails()
+		{
+			usernum = 0;
+			is_admin = 0;
+			is_user = 0;
+		}
 		int userNum()
 		{	
 			usernum++;
@@ -38,16 +45,16 @@ class userDetails
 			system("cls");
 			spacing(1);
 			spacing(2);
-			printf("\tSign Up\n");
+			printf("\t    Sign Up\n");
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
-			gets(given_username[1][20]);
-			puts(username[usernum][20]);
+			fgets(given_username[1][20],20,fp);
+			strcpy(username[usernum][20],given_username[1][20]);
 			spacing(2);
 			printf("--> Password : ");
-			gets(given_password[1][20]);
-			puts(password[usernum][20]);
+			fgets(given_password[1][20], 20, fp);
+			strcpy(password[usernum][20], given_password[1][20]);
 			spacing(2);
 			userNum();	
 			return 0;		
@@ -57,14 +64,14 @@ class userDetails
 			system("cls");
 			spacing(1);
 			spacing(2);
-			printf("\tSign In\n");
+			printf("\t    Sign In\n");
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
-			gets(given_username[1][20]);
+			fgets(given_username[1][20], 20, fp);
 			spacing(2);
 			printf("--> Password : ");
-			gets(given_password[1][20]);
+			fgets(given_password[1][20], 20, fp);
 			if (strcmp(given_username[1][20], "admin") == 0)
 				if (strcmp(given_password[1][20], "admin") == 0)
 					is_admin = 1;
@@ -79,15 +86,7 @@ class userDetails
 						{	
 							is_user = 1;
 							break;
-						}
-					else
-						{
-							spacing(2);
-							printf("Bad Credentials, Either Username Or Password Incorrect\n");
-							printf("Press Any Key to Try Again!");
-							getch();
-							alreadyUser();
-						}							
+						}									
 			if(is_user == 1)
 				{
 					spacing(2);
@@ -98,7 +97,7 @@ class userDetails
 			else
 				{
 					spacing(2);
-					printf("%s not Found\n", given_username[1][20]);
+					printf("Bad Credentials, Either Username Or Password Incorrect\n");
 					printf("Press Any Key to Try Again!");
 					getch();
 					alreadyUser();
@@ -113,6 +112,7 @@ int main()
 }
 int login_screen()
 { //Login Screen 
+	int choice;
 	fstream alreadyUser_obj, newUser_obj;
 	system("cls");
 	spacing(1);
@@ -128,16 +128,17 @@ int login_screen()
 	spacing(2);
 	printf("      Choose Option (1/2) : ");
 	scanf("%d", &i);
-	input_fn(i);
 	switch (i)
 	{
 	case 1: // Case for Already User
+		input_fn(i);
 		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::binary);
 		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
-		dataKey.newUser();
+		dataKey.alreadyUser();
 		alreadyUser_obj.close();
 		break;
 	case 2: // Case for New User
+		input_fn(i);
 		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
 		newUser_obj.write((char *)&dataKey, sizeof(dataKey));
 		dataKey.newUser();
