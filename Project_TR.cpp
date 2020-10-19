@@ -48,9 +48,11 @@ class userDetails
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
+			cin>>given_username[1][20];
 			strcpy(username[usernum][20],given_username[1][20]);
 			spacing(2);
 			printf("--> Password : ");
+			cin >> given_password[1][20];
 			strcpy(password[usernum][20], given_password[1][20]);
 			spacing(2);
 			userNum();	
