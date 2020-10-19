@@ -27,8 +27,14 @@ class userDetails
 	char* password[10][20];
 	char* given_username[1][20];
 	char* given_password[1][20];
-	int usernum = 0, is_admin = 0, is_user = 0;
+	int usernum, is_admin, is_user;
 	public:
+		userDetails()
+		{
+			usernum = 0;
+			is_admin = 0;
+			is_user = 0;
+		}
 		int userNum()
 		{	
 			usernum++;
@@ -38,7 +44,7 @@ class userDetails
 			system("cls");
 			spacing(1);
 			spacing(2);
-			printf("\tSign Up\n");
+			printf("\t    Sign Up\n");
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
@@ -57,7 +63,7 @@ class userDetails
 			system("cls");
 			spacing(1);
 			spacing(2);
-			printf("\tSign In\n");
+			printf("\t    Sign In\n");
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
@@ -105,6 +111,7 @@ int main()
 }
 int login_screen()
 { //Login Screen 
+	int choice;
 	fstream alreadyUser_obj, newUser_obj;
 	system("cls");
 	spacing(1);
@@ -120,16 +127,17 @@ int login_screen()
 	spacing(2);
 	printf("      Choose Option (1/2) : ");
 	scanf("%d", &i);
-	input_fn(i);
 	switch (i)
 	{
 	case 1: // Case for Already User
+		input_fn(i);
 		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::binary);
 		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
 		dataKey.newUser();
 		alreadyUser_obj.close();
 		break;
 	case 2: // Case for New User
+		input_fn(i);
 		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
 		newUser_obj.write((char *)&dataKey, sizeof(dataKey));
 		dataKey.newUser();
