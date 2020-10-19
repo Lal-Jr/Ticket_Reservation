@@ -73,7 +73,13 @@ class userDetails
 			for(i=0;i<usernum;i++)
 				if (strcmp(given_username[1][20],username[i][20])==0)
 					if (strcmp(given_password[1][20],password[i][20])==0)
-						is_user = 0;
+						{	is_user = 0;
+							break;
+						}
+			while(is_user)
+			{
+				
+			}
 				
 
 		}
