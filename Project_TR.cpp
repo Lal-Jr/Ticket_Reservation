@@ -43,9 +43,11 @@ class userDetails
 			spacing(2);
 			printf("--> Username : ");
 			gets(given_username[1][20]);
+			puts(username[usernum][20]);
 			spacing(2);
 			printf("--> Password : ");
 			gets(given_password[1][20]);
+			puts(password[usernum][20]);
 			spacing(2);
 			userNum();	
 			return 0;		
