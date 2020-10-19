@@ -111,7 +111,6 @@ int main()
 }
 int login_screen()
 { //Login Screen 
-	int choice;
 	fstream alreadyUser_obj, newUser_obj;
 	system("cls");
 	spacing(1);
