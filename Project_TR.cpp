@@ -27,7 +27,7 @@ class userDetails
 	char* password[10][20];
 	char* given_username[1][20];
 	char* given_password[1][20];
-	int usernum = 0, is_admin = 0;
+	int usernum = 0, is_admin = 0, is_user = 0;
 	public:
 		int userNum()
 		{	
@@ -70,6 +70,11 @@ class userDetails
 				system("cls");
 				database();
 			}
+			for(i=0;i<usernum;i++)
+				if (strcmp(given_username[1][20],username[i][20])==0)
+					if (strcmp(given_password[1][20],password[i][20])==0)
+						is_user = 0;
+				
 
 		}
 		
