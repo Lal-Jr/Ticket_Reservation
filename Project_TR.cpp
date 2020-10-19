@@ -75,20 +75,11 @@ class userDetails
 			}
 			for(i=0;i<usernum;i++)
 				if (strcmp(given_username[1][20],username[i][20])==0)
-					{	if (strcmp(given_password[1][20],password[i][20])==0)
-							{	
-								is_user = 1;
-								break;
-							}
-						else
-							{
-								spacing(2);
-								printf("Bad Credentials, Either Username Or Password Incorrect\n");
-								printf("Press Any Key to Try Again!");
-								getch();
-								alreadyUser();
-							}
-					}									
+					if (strcmp(given_password[1][20],password[i][20])==0)
+						{	
+							is_user = 1;
+							break;
+						}									
 			if(is_user == 1)
 				{
 					spacing(2);
@@ -99,7 +90,7 @@ class userDetails
 			else
 				{
 					spacing(2);
-					printf("%s not Found\n", given_username[1][20]);
+					printf("Bad Credentials, Either Username Or Password Incorrect\n");
 					printf("Press Any Key to Try Again!");
 					getch();
 					alreadyUser();
