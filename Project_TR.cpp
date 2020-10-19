@@ -62,14 +62,15 @@ class userDetails
 			spacing(2);
 			printf("--> Username : ");
 			gets(given_username[1][20]);
-				if (strcmp(given_username[1][20], "admin") == 0)
-					if (strcmp(given_password[1][20], "admin") == 0)
-						is_admin = 1;
+			if (strcmp(given_username[1][20], "admin") == 0)
+				if (strcmp(given_password[1][20], "admin") == 0)
+					is_admin = 1;
 			while(is_admin)
 			{
 				system("cls");
 				database();
-			}				
+			}
+
 		}
 		
 }dataKey ;
