@@ -1,4 +1,4 @@
-// Updated : 19-10-20 11:36
+// Updated : 19-10-20 23:34
 #include<iostream>
 #include<stdio.h>
 #include<stdlib.h>
@@ -48,7 +48,7 @@ class userDetails
 			spacing(1);
 			spacing(2);
 			printf("--> Username : ");
-			cin>>given_username[1][20];
+			cin >> given_username[1][20];
 			strcpy(username[usernum][20],given_username[1][20]);
 			spacing(2);
 			printf("--> Password : ");
@@ -133,7 +133,7 @@ int login_screen()
 		input_fn(i);
 		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::binary);
 		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
-		dataKey.newUser();
+		dataKey.alreadyUser();
 		alreadyUser_obj.close();
 		break;
 	case 2: // Case for New User
