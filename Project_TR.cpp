@@ -62,6 +62,9 @@ class userDetails
 			spacing(2);
 			printf("--> Username : ");
 			gets(given_username[1][20]);
+			spacing(2);
+			printf("--> Password : ");
+			gets(given_password[1][20]);
 			if (strcmp(given_username[1][20], "admin") == 0)
 				if (strcmp(given_password[1][20], "admin") == 0)
 					is_admin = 1;
@@ -73,15 +76,33 @@ class userDetails
 			for(i=0;i<usernum;i++)
 				if (strcmp(given_username[1][20],username[i][20])==0)
 					if (strcmp(given_password[1][20],password[i][20])==0)
-						{	is_user = 0;
+						{	
+							is_user = 1;
 							break;
 						}
-			while(is_user)
-			{
-				
-			}
-				
-
+					else
+						{
+							spacing(2);
+							printf("Bad Credentials, Either Username Or Password Incorrect\n");
+							printf("Press Any Key to Try Again!");
+							getch();
+							alreadyUser();
+						}							
+			if(is_user == 1)
+				{
+					spacing(2);
+					printf("Welcome, %s", given_username[1][20] );
+					system("cls");
+					main_screen();
+				}
+			else
+				{
+					spacing(2);
+					printf("%s not Found\n", given_username[1][20]);
+					printf("Press Any Key to Try Again!");
+					getch();
+					alreadyUser();
+				}				
 		}
 		
 }dataKey ;
@@ -127,8 +148,6 @@ int login_screen()
 		system("cls");
 		login_screen();
 	}
-	system("cls");
-	main_screen();
 }
 int main_screen()
 { //Main Screen
