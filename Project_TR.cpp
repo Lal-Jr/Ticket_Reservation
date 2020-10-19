@@ -132,6 +132,10 @@ int login_screen()
 	switch (i)
 	{
 	case 1: // Case for Already User
+		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::binary);
+		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
+		dataKey.newUser();
+		alreadyUser_obj.close();
 		break;
 	case 2: // Case for New User
 		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
