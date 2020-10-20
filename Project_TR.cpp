@@ -6,7 +6,8 @@
 #include<conio.h>
 #include<ctype.h>
 #include<fstream>
-#include<string.h>
+#include<string>
+#include<ctype.h>
 using namespace std;
 // Function Prototypes
 int login_screen();
@@ -100,6 +101,7 @@ class userDetails
 			strcpy(username[usernum][20], given_username[1][20]);
 			strcpy(password[usernum][20], given_password[1][20]);
 			userNum();	
+			alreadyUser();
 			return 0;		
 		}
 		
@@ -125,31 +127,32 @@ int login_screen()
 	printf("      --> Sign Up");
 	spacing(2);
 	printf("      Choose Option (1/2) : ");
-	scanf("%d", &i);
+	cin>>i;
 	switch (i)
 	{
-	case 1: // Case for Already User
-		input_fn(i);
-		alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::binary);
-		alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
-		dataKey.alreadyUser();
-		alreadyUser_obj.close();
-		break;
-	case 2: // Case for New User
-		input_fn(i);
-		newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app | ios::binary);
-		newUser_obj.write((char *)&dataKey, sizeof(dataKey));
-		dataKey.newUser();
-		newUser_obj.close();
-		break;
-	default:
-		printf("\n");
-		for (i = 0; i <= 5; i++)
-			printf("\t   ");
-		printf("------INVALID INPUT-------");
-		sleep(2);
-		system("cls");
-		login_screen();
+		case 1: // Case for Already User
+			input_fn(i);
+			alreadyUser_obj.open("UserDetails.dat", ios::in | ios::out );
+			alreadyUser_obj.read((char *)&dataKey, sizeof(dataKey));
+			dataKey.alreadyUser();
+			alreadyUser_obj.close();
+			break;
+		case 2: // Case for New User
+			input_fn(i);
+			newUser_obj.open("UserDetails.dat", ios::in | ios::out | ios::app  );
+			newUser_obj.write((char *)&dataKey, sizeof(dataKey));
+			dataKey.newUser();
+			newUser_obj.close();
+			break;
+		default: 
+			printf("\n");
+			for (i = 0; i <= 5; i++)
+				printf("\t   ");
+			printf("------INVALID INPUT-------");
+			sleep(2);
+			system("cls");
+			login_screen();
+			break;
 	}
 }
 int main_screen()
