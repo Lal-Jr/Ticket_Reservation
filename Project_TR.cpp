@@ -39,25 +39,6 @@ class userDetails
 		{	
 			usernum++;
 		}
-		int newUser()
-		{	
-			system("cls");
-			spacing(1);
-			spacing(2);
-			printf("\t    Sign Up\n");
-			spacing(1);
-			spacing(2);
-			printf("--> Username : ");
-			scanf("%s", &given_username[1][20]);
-			spacing(2);
-			printf("--> Password : ");
-			scanf("%s", &given_password[1][20]);
-			spacing(2);
-			strcpy(username[usernum][20], given_username[1][20]);
-			strcpy(password[usernum][20], given_password[1][20]);
-			userNum();	
-			return 0;		
-		}
 		int alreadyUser()
 		{
 			system("cls");
@@ -102,6 +83,25 @@ class userDetails
 					alreadyUser();
 				}				
 		}
+		int newUser()
+		{	
+			system("cls");
+			spacing(1);
+			spacing(2);
+			printf("\t    Sign Up\n");
+			spacing(1);
+			spacing(2);
+			printf("--> Username : ");
+			scanf("%s", &given_username[1][20]);
+			spacing(2);
+			printf("--> Password : ");
+			scanf("%s", &given_password[1][20]);
+			spacing(2);
+			strcpy(username[usernum][20], given_username[1][20]);
+			strcpy(password[usernum][20], given_password[1][20]);
+			userNum();	
+			return 0;		
+		}
 		
 }dataKey ;
 int main()
@@ -111,7 +111,6 @@ int main()
 }
 int login_screen()
 { //Login Screen 
-	int choice;
 	fstream alreadyUser_obj, newUser_obj;
 	system("cls");
 	spacing(1);
